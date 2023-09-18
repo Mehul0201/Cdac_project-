@@ -1,0 +1,27 @@
+server:
+  port: 8999 # Gateway port
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: false # Set to false to use the configured hostname
+    hostname: your-desired-hostname # Replace with the desired hostname
+
+spring:
+  application:
+    name: apigateway
+    
+  cloud:
+    gateway:
+      routes:
+        - id: hotelservice-route
+          uri: http://localhost:8081 # URI of the HotelService on localhost
+          predicates:
+            - Path=/api/hotels/**
+            
+        - id: ratingservice-route
+          uri: http://localhost:8082 # URI of the RatingService on localhost
+          predicates:
+            - Path=/api/ratings/**

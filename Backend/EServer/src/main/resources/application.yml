@@ -1,0 +1,19 @@
+server:
+  port: 8761 # Eureka Server port
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    registerWithEureka: false # The Eureka Server itself won't register
+    fetchRegistry: false # The Eureka Server won't fetch registry information
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: DEBUG
+
